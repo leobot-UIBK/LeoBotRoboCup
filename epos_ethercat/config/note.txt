@@ -1,0 +1,1 @@
+the wheels are not displayed properly in the image --> the robot would not be able to move this way. Either X or O configuration. 

@@ -1,0 +1,8 @@
+#goal defintion
+MSG_Object_Location information
+---
+#result definiton
+MSG_Object_Grasping object_grasping
+---
+#feedback 
+string current_activity

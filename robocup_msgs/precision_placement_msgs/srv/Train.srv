@@ -1,0 +1,5 @@
+string input_trajectory_path
+string input_wrench_path
+string save_dir
+---
+bool success

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+	<node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen">
+		<remap from="/cmd_vel" to="/leobot_base/cmd_vel" /> 
+		<param name="repeat_rate" value="10" />
+		<param name="speed" value="0.3" />      
+		<param name="turn" value="0.5"/>
+	</node>
+</launch>

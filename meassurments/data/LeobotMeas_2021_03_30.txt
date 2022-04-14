@@ -1,0 +1,9 @@
+# this file contains data for the MeasurmentMaster, which reads the desired commands from this file. 
+# each line resembles a movement. The commands are given to the service of the timed publisher. 
+# The acceleration is assumed to be constant. The zeroPosition indicates a return to the zeroposition after the trajectory. 
+# [i], [sx, sy, phiz] , [vx, vy, w], [a_x, a_y, dw], zeroPositioon
+#   0,   0,   0,  0,    0,  0,  0,   	0,   0,	 0	0
+0,0.1,0,0,0.2,0,0,0.4,0,0,0 # 11 values for well defined measurment 
+1,0,0.1,0,0,0.2,0,0,0.2,0, 0
+2,-0.1,0,0,-0.2,0,0,-0.4,0,0,0
+3,0,-0.1,0,0,-0.2,0,0,-0.2,0,1

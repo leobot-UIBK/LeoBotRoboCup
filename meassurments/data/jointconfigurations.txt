@@ -1,0 +1,64 @@
+upward:
+rosservice call /franka_move_node/move_joints "
+ {joint_1: 0.0, 
+  joint_2: -0.3, 
+  joint_3: -0.0, 
+  joint_4: -0.6, 
+  joint_5: 0.0, 
+  joint_6: 0.5,
+  joint_7: 0.8}" 
+
+front axle:40.3
+rear axle: 22.9
+wheel base left: 32.9:
+wheel base right: 29.9
+
+
+
+front:
+rosservice call /franka_move_node/move_joints "
+ {joint_1: 0.0, 
+  joint_2: 1.2, 
+  joint_3: -0.0, 
+  joint_4: -0.6, 
+  joint_5: 0.0, 
+  joint_6: 1.8,
+  joint_7: 0.8}" 
+
+
+
+Com centered:
+rosservice call /franka_move_node/move_joints "
+ {joint_1: 0.2, 
+  joint_2: -1.5, 
+  joint_3: -0.0, 
+  joint_4: -1.7, 
+  joint_5: 0.0, 
+  joint_6: 1.8,
+  joint_7: 0.8}" 
+
+front axle:32
+rear axle: 31.2
+wheel base left: 31.6
+wheel base right: 32.8
+
+
+diagonal:
+rosservice call /franka_move_node/move_joints "
+ {joint_1: 1.0, 
+  joint_2: 1.2, 
+  joint_3: -0.0, 
+  joint_4: -0.6, 
+  joint_5: 0.0, 
+  joint_6: 1.8,
+  joint_7: 0.8}" 
+
+
+rosbag record /leobot_base/MotorMonitor /leobot_base/MotorStatus /leobot_base/cmd_vel /leobot_base/odom /meassurements/flag /vicon/leobot/leobot_control_flag /vicon/leobot/leobot /joint_states
+
+
+
+
+
+
+

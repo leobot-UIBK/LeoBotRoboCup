@@ -1,0 +1,7 @@
+<?xml version="1.0"?> 
+<launch> 
+    <arg name="config" default="$(find bringup_leobot)/config/rviz_gui.rviz"/>
+<node name="rviz_gui" pkg="rviz" type="rviz" args="-d $(arg config)"/>
+
+ 
+</launch>

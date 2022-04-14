@@ -1,0 +1,7 @@
+<launch>
+<!--  !-->
+<!--arg name="pose" default="[0,0,0]" !-->
+ 
+<node name="panda_test_move" pkg="panda_test_move" type="pandamovetest.py" output="screen"/>
+</launch>
+

@@ -1,0 +1,8 @@
+<launch>
+    <group ns="commandtree_robocup">
+        <node pkg="commandtree_robocup" name="arena_info" type="arena_info.py" output="screen"/>
+            <remap from="wait" to="commandtree_robocup/arena_info/wait" />
+            <remap from="service_area" to="commandtree_robocup/arena_info/service_area" />
+            <remap from="move" to="commandtree_robocup/arena_info/move" />
+    </group>
+</launch>

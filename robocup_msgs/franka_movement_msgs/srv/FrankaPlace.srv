@@ -1,0 +1,4 @@
+string object_id
+moveit_msgs/PlaceLocation place_location
+---
+moveit_msgs/MoveItErrorCodes error_code

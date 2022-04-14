@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<launch>
+  <!--Arguments and Settings-->
+  <!--TIM IP's-->
+  <arg name="hostname_front" default="192.168.1.21" />
+  <arg name="hostname_back" default="192.168.1.22" />
+  <!--TIM TF's-->
+  <arg name="tim_front" default="0.319615 0 0 3.9265 3.1415 0" />
+  <arg name="tim_back" default="-0.319615 0 0 0.785398163 3.1415 0" />
+
+  <!--URDF Model (Not my job)-->
+  <!--<arg name="model" default="$(find urdf_tutorial)/urdf/RoboCup.urdf"/>-->
+
+  <!--RViz File-->
+  <arg name="rviz_file" default="/home/robo/repository_robot/robocupatwork/leobot_safety/launch/leobot_safety.rviz" />
+
+  <!--Optional packages-->
+  <arg name="rviz"    default="true" /> <!--For visualisation of the merged scan and the map of hector (if available) -->
+  <arg name="hector"    default="true" /> <!--Hector SLAM-->
+
+  <!--Delay for startup (Did not get it working correct without)-->
+  <arg name="laser_combine_start_delay" default="2.0" />  
+  <arg name="hector_start_delay" default="3.0" />
+
+  <!--URDF/Model (Not my job)-->
+  <!--<param name="robot_description" command="$(find xacro)/xacro.py '$(find sick_scan)/urdf/RoboCup.urdf.xacro'" />-->
+  
+  <!--Hector-->
+  <arg name="geotiff_map_file_path" default="$(find hector_geotiff)/maps"/>
+  <param name="/use_sim_time" value="false"/>
+
+  <arg name="tf_map_scanmatch_transform_frame_name" default="scanmatcher_frame"/>
+  <arg name="base_frame" default="base_link"/>
+  <arg name="odom_frame" default="base_link"/>
+  <arg name="pub_map_odom_transform" default="true"/>
+  <arg name="scan_subscriber_queue_size" default="5"/>
+  <arg name="scan_topic" default="/scan_combined"/>
+  <arg name="map_size" default="1024"/>
+
+  <!--Nodes-->
+  <!--TIM front-->
+  <node name="sick_tim_5xx_1" pkg="sick_scan" type="sick_generic_caller"  respawn="false" output="screen">
+    <param name="scanner_type" type="string" value="sick_tim_7xxS" />
+    <param name="frame_id" value="/laser_front"/>
+    <param name="min_ang" type="double" value="-2.35619449" /><!-- -135° -->
+    <param name="max_ang" type="double" value="2.35619449" /><!-- 135° -->
+    <param name="range_max" type="double" value="100.0" />
+    <param name="intensity" type="bool" value="true" />
+    <param name="hostname" type="string" value="$(arg hostname_front)" />
+    <param name="port" type="string" value="2112" />
+    <param name="timelimit" type="int" value="5" />
+    <param name="use_binary_protocol" type="bool" value="true" />
+    <remap from="scan" to="scan_front" />
+    <remap from="cloud" to="cloud_front" />
+  </node>
+
+  <!--TIM back-->
+  <node name="sick_tim_5xx_2" pkg="sick_scan" type="sick_generic_caller"  respawn="false" output="screen">
+    <param name="scanner_type" type="string" value="sick_tim_7xxS" />
+    <param name="frame_id" value="/laser_back"/>
+    <param name="min_ang" type="double" value="-2.35619449" /><!-- -135° -->
+    <param name="max_ang" type="double" value="2.35619449" /><!-- 135° -->
+    <param name="range_max" type="double" value="100.0" />
+    <param name="intensity" type="bool" value="true" />
+    <param name="hostname" type="string" value="$(arg hostname_back)" />
+    <param name="port" type="string" value="2112" />
+    <param name="timelimit" type="int" value="5" />
+    <param name="use_binary_protocol" type="bool" value="true" />
+    <remap from="scan" to="scan_back" />
+    <remap from="cloud" to="cloud_back" />
+  </node>
+
+  <!--TF Modell-->
+  <node pkg="tf" type="static_transform_publisher" name="tim_front" args="$(arg tim_front) base_link sick_tim_5xx_mount_link_front 100" />
+  <node pkg="tf" type="static_transform_publisher" name="tim_back" args="$(arg tim_back) base_link sick_tim_5xx_mount_link_back 100" />
+
+  <!--TF LaserScan-->
+  <node pkg="tf" type="static_transform_publisher" name="scanner_front_to_map" args="$(arg tim_front) base_link laser_front 100" />
+  <node pkg="tf" type="static_transform_publisher" name="scanner_back_to_map" args="$(arg tim_back) base_link laser_back 100" />
+
+  <!--node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /-->
+  <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /-->
+
+  <!--RViz-->
+  <node pkg="rviz" type="rviz" name="$(anon rviz)" args="-d $(arg rviz_file)" output="screen" if="$(arg rviz)"/>
+
+  <!--Scan Merger-->
+  <node pkg="ira_laser_tools" name="laserscan_multi_merger" type="laserscan_multi_merger" output="screen" launch-prefix="bash -c 'sleep $(arg laser_combine_start_delay); $0 $@' ">
+   <param name="destination_frame" value="/base_link"/>
+   <param name="cloud_destination_topic" value="/merged_cloud"/>
+   <param name="scan_destination_topic" value="/scan_combined"/>
+   <param name="laserscan_topics" value ="/scan_front /scan_back" />
+   <param name="angle_min" value="-3.1415"/>
+   <param name="angle_max" value="3.1415"/>
+   <param name="angle_increment" value="0.0058"/>
+   <param name="scan_time" value="0.0333333"/>
+   <param name="range_min" value="0.45"/>
+   <param name="range_max" value="50.0"/>
+  </node>
+
+  <!--Hector-->
+  <!--<include file="$(find hector_slam_launch)/launch/RoboCup.launch" if="$(arg hector)" launch-prefix="bash -c 'sleep $(arg hector_start_delay); $0 $@' "/>-->
+  <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen" launch-prefix="bash -c 'sleep $(arg hector_start_delay); $0 $@' " if="$(arg hector)">
+    
+    <!-- Frame names -->
+    <param name="map_frame" value="map" />
+    <param name="base_frame" value="$(arg base_frame)" />
+    <param name="odom_frame" value="$(arg odom_frame)" />
+    
+    <!-- Tf use -->
+    <param name="use_tf_scan_transformation" value="true"/>
+    <param name="use_tf_pose_start_estimate" value="false"/>
+    <param name="pub_map_odom_transform" value="$(arg pub_map_odom_transform)"/>
+    
+    <!-- Map size / start point -->
+    <param name="map_resolution" value="0.05"/>
+    <param name="map_size" value="$(arg map_size)"/>
+    <param name="map_start_x" value="0.5"/>
+    <param name="map_start_y" value="0.5" />
+    <param name="map_multi_res_levels" value="2" />
+    
+    <!-- Map update parameters -->
+    <param name="update_factor_free" value="0.2"/>
+    <param name="update_factor_occupied" value="0.9" />    
+    <param name="map_update_distance_thresh" value="0.2"/>
+    <param name="map_update_angle_thresh" value="0.03" />
+    <param name="laser_z_min_value" value = "-1.0" />
+    <param name="laser_z_max_value" value = "1.0" />
+    
+    <!-- Advertising config --> 
+    <param name="advertise_map_service" value="true"/>
+    
+    <param name="scan_subscriber_queue_size" value="$(arg scan_subscriber_queue_size)"/>
+    <param name="scan_topic" value="$(arg scan_topic)"/>
+    
+    <!-- Debug parameters -->
+    
+    <param name="output_timing" value="false"/>
+    <param name="pub_drawings" value="false"/>
+    <param name="pub_debug_output" value="false"/>
+
+    <param name="tf_map_scanmatch_transform_frame_name" value="$(arg tf_map_scanmatch_transform_frame_name)" />
+  </node>
+
+  <include file="$(find hector_geotiff)/launch/geotiff_mapper.launch">
+    <arg name="trajectory_source_frame_name" value="scanmatcher_frame"/>
+    <arg name="map_file_path" value="$(arg geotiff_map_file_path)"/>
+  </include>
+</launch>
+

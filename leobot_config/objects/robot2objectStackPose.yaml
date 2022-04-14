@@ -1,0 +1,55 @@
+# This .yaml file stores information about the object stack position in reference to the franka manipulator link0
+# Version 2021; units meter, RAD
+# Stacknumber: A number to identify the object stack
+# positon: Positon of the center of the object in reference to the franka link0  coordinate system
+# orientation: Orientation of the object in reference to franka link0 coordinate system 
+# Please be ware to use the calibration points on the stack plate
+# Numbering: 1, 2, 3, 4
+#             5, 6, 7, 8
+#            9, 10, 11
+#               12, 13
+# Stack Plate on z=0.21 from panda_link0
+objStack1_F20_20_B:           {Stacknumber:  1,   name: F20_20_B,        position: [-0.5, -0.2306, 0.265],     orientation: [-0.1412672, 0.3202788, 0.42428059], RzRy: [23, 20], size: [0.09, 0.05, 0.08]}
+objStack1_F20_20_G:           {Stacknumber:  1,   name: F20_20_G,        position: [-0.5, -0.2306, 0.265],     orientation: [-0.1412672, 0.3202788, 0.42428059], RzRy: [23, 20],  size: [0.09, 0.05, 0.08]}
+objStack1_S40_40_B:           {Stacknumber:  1,   name: S40_40_B,        position: [-0.48, -0.2306, 0.295],     orientation: [-0.1412672, 0.3202788, 0.42428059], RzRy: [23, 20],  size: [0.09, 0.05, 0.08] }
+objStack1_S40_40_G:           {Stacknumber:  1,   name: S40_40_G,        position: [-0.48, -0.2306, 0.295],     orientation: [-0.1412672, 0.3202788, 0.42428059], RzRy: [23, 20],  size: [0.09, 0.05, 0.08] }
+
+objStack3_Axis:             {Stacknumber:  2,   name: Axis,          position: [-0.528,  -0.007, 0.27],             orientation: [-0.0, 0.611, -0.0],   RzRy: [0, 35],  size: [0.095, 0.028, 0.075]    }
+objStack3_M20_100:          {Stacknumber:  2,   name: M20_100,       position: [-0.521,  -0.0059, 0.277],              orientation: [-0.0, 0.611, -0.0],  RzRy: [0, 35],  size: [0.095, 0.028, 0.075]       }
+
+objStack2_Axis:             {Stacknumber:  3,   name: Axis,          position: [-0.48,  0.10, 0.267],       orientation: [0.162, 0.5916, -0.2851], RzRy: [-13.5, 35],   size: [0.095, 0.028, 0.075]  }
+objStack2_M20_100:          {Stacknumber:  3,   name: M20_100,       position: [-0.482,  0.10, 0.27],       orientation: [0.162, 0.5916, -0.2851], RzRy: [-13.5, 35],   size: [0.095, 0.028, 0.075]   }
+
+objStack1_Motor:            {Stacknumber:  4,   name: Motor,         position: [-0.512, 0.2075, 0.265],       orientation: [0.246, 0.5651, -0.4382], RzRy: [-21, 35],  size: [0.062, 0.045, 0.06]      }
+
+objStack1_Axis:             {Stacknumber:  5,   name: Axis,          position: [-0.4042, -0.1348, 0.264],       orientation: [-0.1793, 0.5872, 0.3161] ,  RzRy: [15, 35],  size: [0.095, 0.028, 0.075]  }
+objStack1_M20_100:          {Stacknumber:  5,   name: M20_100,       position: [-0.4042, -0.1348, 0.275],       orientation: [-0.1793, 0.5872, 0.3161]  , RzRy: [15, 35],  size: [0.095, 0.028, 0.075]  }
+
+objStack2_R20:              {Stacknumber:  6,   name: R20,           position: [-0.354, 0.00648, 0.255],       orientation: [-0.0, 0.611, -0.0] ,                   RzRy: [0, 35],  size: [0.048, 0.036, 0.05 ] }
+
+objStack1_R20:              {Stacknumber:  7,   name: R20,           position: [-0.3851, 0.145, 0.2544],              orientation: [0.2241, 0.573,  -0.3979]  ,  RzRy: [-21, 35],   size: [0.048, 0.036, 0.05 ]    }
+
+objStack2_Motor:            {Stacknumber:  8,   name: Motor,         position: [-0.40, 0.205, 0.266],              orientation: [0.2459, 0.5651, -0.4382] ,    RzRy: [-21, 35],   size: [0.062, 0.045, 0.06]       }
+
+objStack2_F20_20_B:           {Stacknumber:  9,   name: F20_20_B,        position: [-0.298, -0.178, 0.26],        orientation: [-0.1413, 0.3203, 0.4243], RzRy: [23, 20],  size: [0.09, 0.05, 0.08] }
+objStack2_F20_20_G:           {Stacknumber:  9,   name: F20_20_G,        position: [-0.298, -0.178, 0.26],        orientation: [-0.1413, 0.3203, 0.4243], RzRy: [23, 20],  size: [0.09, 0.05, 0.08] }
+objStack2_S40_40_B:           {Stacknumber:  9,   name: S40_40_B,        position: [-0.29, -0.175, 0.29],        orientation: [-0.1413, 0.3203, 0.4243],RzRy: [23, 20],   size: [0.09, 0.05, 0.08] }
+objStack2_S40_40_G:           {Stacknumber:  9,   name: S40_40_G,        position: [-0.29, -0.175, 0.29],        orientation: [-0.1413, 0.3203, 0.4243],RzRy: [23, 20],   size: [0.09, 0.05, 0.08] }
+
+objStack1_Bearing_Box:      {Stacknumber:  10,  name: Bearing_Box,   position: [-0.308, 0.107, 0.256],         orientation: [-0.0, 0.0, -4.2585], RzRy: [-154, 0],  size: [0.06, 0.055, 0.03]   }
+
+objStack1_M20:              {Stacknumber:  11,  name: M20,           position: [-0.263, 0.161, 0.2469],       orientation: [0.0, 0.0, -0.7854] ,   RzRy: [32.5, 0],  size: [0.04 , 0.024 , 0.035]     }
+objStack2_Bearing:          {Stacknumber:  11,  name: Bearing,       position: [-0.263, 0.161, 0.2469],       orientation: [0.0, 0.0, -0.7854]   , RzRy: [32.5, 0],  size: [0.04 , 0.024 , 0.035]      }
+
+objStack1_M30:              {Stacknumber:  12,  name: M30,           position: [-0.3076, 0.194, 0.25223],       orientation: [0.0, 0.0, -0.7854]   ,  RzRy: [32.5, 0],  size: [0.04 , 0.04 , 0.035]      }
+objStack2_Distance_Tube:    {Stacknumber:  12,  name: Distance_Tube, position: [-0.30789, 0.18852, 0.249],       orientation: [0.0, 0.0, -0.7854]     , RzRy: [32.5, 0],  size: [0.04 , 0.04 , 0.035]    }
+
+objStack2_Bearing_Box:      {Stacknumber:  13,  name: Bearing_Box,   position: [-0.242, 0.0755, 0.2505],              orientation: [0.0, 0.0, -4.2585]    , RzRy: [-154, 0],  size: [0.06, 0.055, 0.03]    }
+
+objStack2_M30:              {Stacknumber:  14,  name: M30,           position: [-0.2022, 0.1858, 0.2505],       orientation: [0.0, 0.0, -0.7854]    , RzRy: [44, 0],  size: [0.04 , 0.04 , 0.035]     }
+objStack1_Distance_Tube:    {Stacknumber:  14,  name: Distance_Tube, position: [-0.2029, 0.1873, 0.249],       orientation: [0.0, 0.0, -0.7854]     , RzRy: [44, 0],  size: [0.04 , 0.04 , 0.035]   }
+
+objStack2_M20:              {Stacknumber:  15,  name: M20,           position: [-0.239, 0.221, 0.2465],       orientation: [0.0, 0.0, -0.7854]    ,  RzRy: [44, 0],  size: [0.04 , 0.024 , 0.035]   }
+objStack1_Bearing:          {Stacknumber:  15,  name: Bearing,       position: [-0.239, 0.221, 0.2465],       orientation: [0.0, 0.0, -0.7854]     , RzRy: [44, 0],  size: [0.04 , 0.024 , 0.035]    }
+
+

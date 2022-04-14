@@ -1,0 +1,8 @@
+#goal defintion
+MSG_Object_Placing target
+---
+#result definiton
+MSG_TransportStamped object_location
+---
+#feedback 
+string feedback

@@ -1,0 +1,16 @@
+cmake-build-debug/
+.idea
+.vscode
+devel/
+build/
+*.swp
+iis_robocup_at_work/
+/CMakeLists.txt
+.idea
+logs/
+.catkin_tools/
+*.pymodhis
+*.pyc
+
+CATKIN_IGNORE
+/precision_placement

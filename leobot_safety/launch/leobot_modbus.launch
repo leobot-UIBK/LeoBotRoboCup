@@ -1,0 +1,11 @@
+<launch>
+	<node name="leobot_safety" pkg="leobot_safety" type="leobot_safety_node.py" output="screen">
+		<param name="ip" type="string" value="192.168.1.20"/>
+		<param name="port" type="int" value="502"/>
+		<!--Speed for zone switching-->
+		<param name="zone2" type="double" value="0.2"/>
+		<!--ModBus Adresses-->
+		<param name="input_addr" value="999"/>
+		<param name="output_addr" value="1999"/>
+	</node>
+</launch>

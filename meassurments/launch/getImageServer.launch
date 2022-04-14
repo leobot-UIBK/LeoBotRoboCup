@@ -1,0 +1,10 @@
+<launch>
+<!--  !-->
+<arg name="directory" default = "$(find meassurments)/Imagedata/S40_40_B"/>
+<arg name="filename" default="TestImage"/>
+<arg name="Topicname" default="/camera/color/image_raw"/>
+<arg name="TopicnameDepth" default="/camera/depth/image_rect_raw"/>
+<node name="GetImageFrameServer" pkg="meassurments" type="GetImageFrame_Server.py" args="$(arg directory) $(arg filename) $(arg Topicname) $(arg TopicnameDepth)" output="screen"/>
+</launch>
+
+

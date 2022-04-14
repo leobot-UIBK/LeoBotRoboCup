@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<robot name="SICKS">
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 -0.0008" />
+      <geometry>
+        <box size="0.5 0.7 0.0016"/>
+      </geometry>
+        <material name="white" >
+          <color rgba="1 1 1 1" />
+        </material>
+    </visual>
+  </link>
+
+    <link name="sick_tim_5xx_mount_link_vorne">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.000001" ixy="0.0" ixz="0.0"
+          iyy="0.000001" iyz="0.0" izz="0.000001" />
+      </inertial>
+    </link>
+
+    <joint name="sick_tim_5xx_joint_vorne" type="fixed">
+      <parent link="sick_tim_5xx_mount_link_vorne" />
+      <child link="sick_tim_5xx_vorne" />
+      <origin rpy="0 0 0" xyz="0 0 0.0642"/>
+    </joint>
+
+    <link name="sick_tim_5xx_vorne">
+      <visual>
+        <geometry>
+          <mesh filename="package://sick_scan/meshes/sick_tim_5xx.stl" />
+        </geometry>
+        <material name="sickcolor" >
+          <color rgba="0.97 0.71 0 1" />
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://sick_scan/meshes/sick_tim_5xx.stl" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.150" />
+        <origin xyz="0 0 -0.026" />
+        <inertia ixx="${0.0833333 * 0.150 * (0.06 * 0.06 + 0.079 * 0.079)}" ixy="0.0" ixz="0.0"
+          iyy="${0.0833333 * 0.150 * (0.06 * 0.06 + 0.079 * 0.079)}" iyz="0.0"
+          izz="${0.0833333 * 0.150 * (0.06 * 0.06 + 0.06 * 0.06)}" />
+      </inertial>
+    </link>
+
+
+
+    <link name="sick_tim_5xx_mount_link_hinten">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.000001" ixy="0.0" ixz="0.0"
+          iyy="0.000001" iyz="0.0" izz="0.000001" />
+      </inertial>
+    </link>
+
+    <joint name="$sick_tim_5xx_joint_hinten" type="fixed">
+      <parent link="sick_tim_5xx_mount_link_hinten" />
+      <child link="sick_tim_5xx_hinten" />
+      <origin rpy="0 0 0" xyz="0 0 0.0642"/>
+    </joint>
+
+    <link name="sick_tim_5xx_hinten">
+      <visual>
+        <geometry>
+          <mesh filename="package://sick_scan/meshes/sick_tim_5xx.stl" />
+        </geometry>
+        <material name="sickcolor"/>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://sick_scan/meshes/sick_tim_5xx.stl" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.150" />
+        <origin xyz="0 0 -0.026" />
+        <inertia ixx="${0.0833333 * 0.150 * (0.06 * 0.06 + 0.079 * 0.079)}" ixy="0.0" ixz="0.0"
+          iyy="${0.0833333 * 0.150 * (0.06 * 0.06 + 0.079 * 0.079)}" iyz="0.0"
+          izz="${0.0833333 * 0.150 * (0.06 * 0.06 + 0.06 * 0.06)}" />
+      </inertial>
+    </link>
+
+  <joint name="base_to_tim_vorne" type="fixed">
+    <parent link="base_link"/>
+    <child link="sick_tim_5xx_mount_link_vorne"/>
+  </joint>
+
+  <joint name="base_to_tim_hinten" type="fixed">
+    <parent link="base_link"/>
+    <child link="sick_tim_5xx_mount_link_hinten"/>
+  </joint>
+
+</robot>
+

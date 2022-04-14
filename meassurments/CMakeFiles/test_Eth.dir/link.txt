@@ -1,0 +1,1 @@
+/usr/bin/c++  -g  -rdynamic CMakeFiles/test_Eth.dir/src/test_Eth.cpp.o  -o /home/peter/catkin_devel/devel/lib/meassurments/test_Eth external/libsoem.a -lpthread -lrt 

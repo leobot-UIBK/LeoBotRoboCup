@@ -1,0 +1,8 @@
+<launch>
+<!--  !-->
+<arg name="pose" default="[0,0,0]"/>
+ 
+<node name="settargetposition" pkg="vicon_position" type="settargetposition.py" args="$(arg pose)" output="screen"/>
+<node name="vicon_position" pkg="vicon_position" type="vicon_position.py" output="screen"/>
+</launch>
+

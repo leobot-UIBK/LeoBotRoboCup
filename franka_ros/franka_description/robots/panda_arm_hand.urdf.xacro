@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
+
+  <!-- Initialize xacro parameters -->
+  <xacro:arg name="robot_name" default="panda"/>
+
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+
+  <!-- Initialize gripper_center properties -->
+  <xacro:arg name="gripper_center" default="false" />
+  <xacro:property name="gripper_center" value="$(arg gripper_center)"/>
+  <xacro:arg name="gripper_center_xyz" default="0.0 0.0 0.10" />
+  <xacro:property name="gripper_center_xyz" value="$(arg gripper_center_xyz)"/>
+
+
+  <!--xacro:include filename="$(find franka_description)/robots/robot_base.xacro" />
+  <xacro:base /-->
+
+  <!-- Include camera_base -->
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro" />
+
+  <xacro:sensor_d435i parent="panda_link0" name="camera_base" use_nominal_extrinsics="false">
+    <origin xyz="0.169 0 0.205" rpy="0 ${M_PI/4} 0"/>
+  </xacro:sensor_d435i>
+
+  <!-- Include xacro files -->
+  <xacro:include filename="$(find franka_description)/robots/panda_arm.xacro"/>
+  <xacro:include filename="$(find franka_description)/robots/hand.xacro"/>
+  <!-- xacro:include filename="$(find franka_description)/robots/panda.gazebo.xacro"/ -->
+  <!-- xacro:include filename="$(find franka_description)/robots/panda.transmission.xacro"/ -->
+
+  <!-- Generate urdfs -->
+  <xacro:panda_arm safety_distance="0.01"/>
+  <xacro:hand ns="panda" rpy="0 0 ${-pi/4}" connected_to="panda_link8" safety_distance="0.0" gripper_center="${gripper_center}" gripper_center_xyz="${gripper_center_xyz}"/>
+  <!-- xacro:panda_gazebo robot_name="$(arg robot_name)" / -->
+  <!-- xacro:panda_transmission robot_name="$(arg robot_name)" / -->
+
+  <!-- Include camera_ee -->
+  <xacro:arg name="use_nominal_extrinsics" default="false" />
+  <xacro:arg name="add_plug" default="false" />
+  <xacro:include filename="$(find realsense2_description)/urdf/_d415.urdf.xacro" />
+
+  <xacro:sensor_d415 parent="panda_hand" name="camera_arm" use_nominal_extrinsics="$(arg use_nominal_extrinsics)" add_plug="$(arg add_plug)">
+    <origin xyz="0.028 0 0.045" rpy="${M_PI} -${M_PI/2} 0"/>
+  </xacro:sensor_d415>
+</robot>

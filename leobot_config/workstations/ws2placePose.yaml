@@ -1,0 +1,19 @@
+# This .yaml file stores information about the place position in reference to a certain workspace WSxx
+# Version 2021; units meter, RAD
+
+# description: A string to identify the pose of the plce in detail
+# positon: Positon of the center of the place pose  in reference to the WSxx in center of  WSxx=0.5x0.2 rectangle
+#          coordinate sytem: x shows to center of desk, z equals to world z
+
+
+# or  just the possible cavitie places 
+placePose01:  { number: 1 ,  description:  left of center,         position: [0.0,  0.05]}
+placePose02:  { number: 2 ,  description:  right of center,        position: [0.0, -0.05]}
+placePose03:  { number: 3 ,  description:  left of center,         position: [0.0, 0.15]  }
+placePose04:  { number: 4 ,  description:  right of center,        position: [0.0, -0.15] }
+placePose05:  { number: 5 ,  description:  left of center,         position: [0.0, 0.25]  }
+placePose06:  { number: 6 ,  description:  right of center,        position: [0.0, -0.25] }
+placePose07:  { number: 7 ,  description:  left of center,         position: [0.0, 0.35]  }
+placePose08:  { number: 8 ,  description:  right of center,        position: [0.0, -0.35]  }
+
+

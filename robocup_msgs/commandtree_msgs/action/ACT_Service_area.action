@@ -1,0 +1,9 @@
+#goal defintion
+MSG_TransportStamped object_manipulation
+---
+#result definiton
+MSG_TransportStamped object_location
+---
+#feedback 
+string current_activity
+

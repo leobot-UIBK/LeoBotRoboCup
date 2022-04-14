@@ -1,0 +1,4 @@
+string dmp_dir
+geometry_msgs/PoseStamped poseStamped
+---
+geometry_msgs/PoseStamped poseStamped

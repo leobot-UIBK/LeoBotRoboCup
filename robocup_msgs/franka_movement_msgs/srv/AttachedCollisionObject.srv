@@ -1,0 +1,14 @@
+moveit_msgs/AttachedCollisionObject attached_collision_object
+# Adds the object to the planning scene. If the object previously existed, it is replaced.
+# If the object previously existed but was not attached it is now attached.
+int8 ADD=0
+
+# Removes the object from the environment entirely (everything that matches the specified id)
+int8 REMOVE=1
+
+# Object will be detached but remains in the planning scene
+int8 DETACH=2
+
+# Operation to be performed
+int8 operation
+---

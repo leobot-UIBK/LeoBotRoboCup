@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+
+<launch>
+    <arg name="rviz" default="true"/>
+    <arg name="vicon" default="false"/> 
+<!--arg name="is_origin" default="True">
+
+<group if=$(arg is_origin)>
+
+</group> 
+
+<group unless=$(arg is_origin)>
+
+</group-->
+
+<!-- controller for wheel interface-->
+<include file="$(find epos_ethercat)/launch/leobot_base.launch" >
+</include> 
+<!-- starts the safety software package (safety plc runs automatically!) 
+<include file="$(find leobot_safety)/launch/leobot_safety.launch" >
+	<arg name="rviz" value="$(arg rviz)" /> 
+</include> 
+-->
+
+<!-- sick TIM's and LaserMerger -->
+<include file="$(find bringup_leobot)/launch/bringup_sick.launch">
+</include>
+
+<!-- starts the communication with the safety PLC using modbus over IP --> 
+<include file="$(find leobot_safety)/launch/leobot_modbus.launch" >
+</include> 
+
+    <!-- static stransformation from base_link to footprints (located at floor height)-->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_basefootprint" args="0 0 -0.05 0 0 0 base_link base_footprint" />
+    <!--node pkg="tf2_ros" type="static_transform_publisher" name="base_to_pandafootprint" args="0.211 0 -0.05 0 0 0 base_link panda_footprint" /-->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="world_to_map" args="0 0 0 0 0 0 world map" unless="$(arg vicon)"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 map odom" />
+
+
+</launch> 

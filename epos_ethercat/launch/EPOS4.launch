@@ -1,0 +1,10 @@
+<launch>
+<!-- the port can be used to specify to which ehternet interface the EtherCAT is connected-->
+<arg name="interface" default="enp1s0f1"/>
+<arg name="OPMode" default="3"/>
+<group ns="leobot_base">
+	<rosparam file="$(find epos_ethercat)/config/leobot_base.yaml"/>
+</group>
+<node launch-prefix="ethercat_grant" name="EPOS4_node" pkg="epos_ethercat" type="Eth_EPOS4" args="$(arg interface) $(arg OPMode)" output = "screen"/>
+</launch>
+

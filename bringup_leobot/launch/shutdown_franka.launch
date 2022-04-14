@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<launch>
+	<arg name="robot_ip" default="192.168.5.1" />
+	<arg name="path_franka_auth" default="$(find bringup_leobot)/config/franka_auth.txt" />
+
+ 	<node pkg = "bringup_leobot" type="shutdown_franka.py" name="franka_shutdown_controller" args="$(arg robot_ip) $(arg path_franka_auth)" output = "screen" />
+</launch>

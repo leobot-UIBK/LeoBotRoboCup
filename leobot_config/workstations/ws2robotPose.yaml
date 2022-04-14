@@ -1,0 +1,19 @@
+# This .yaml file stores information about the robot position in reference to a roboCup@Work workstation (WS)
+# Version 2021; units meter, RAD
+
+# description: A string to identify the pose of the robot in detail
+# positon: Positon of robot center (base_frame) in reference to the workstation coordinate system in center of WS where WS=0.5x0.2 rectangle
+#          coordinate sytem: x shows to center of desk, z equals to world z
+# orientation: Orientation of robot (base_frame) in reference to workstation coordinate system 
+
+ws2robotFront:   {description:  Workstation in front of robot,           position: [-0.650, 0.02, 0.0], orientation: [0.0, 0.0, 0.0, 1.0]}
+ws2robotRight:   {description:  Workstation to the right side of robot,  position: [-0.550, -0.211, 0.0], orientation: [0.0, 0.0, 0.7071068, 0.7071068]}
+ws2robotLeft:    {description:  Workstation to the left side of robot,    position: [-0.550, 0.211, 0.0], orientation: [0.0, 0.0, -0.7071068, 0.7071068]}
+
+
+
+
+
+
+
+

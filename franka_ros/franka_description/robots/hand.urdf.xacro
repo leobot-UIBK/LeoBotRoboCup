@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="hand">
+
+  <!-- Initialize gripper_center properties -->
+  <xacro:arg name="gripper_center" default="false" /> <!-- Default value -->
+  <xacro:property name="gripper_center" value="$(arg gripper_center)"/> <!-- Overload with launchfile argument -->
+  <xacro:arg name="gripper_center_xyz" default="0.0 0.0 0.10" /> <!-- Default value -->
+  <xacro:property name="gripper_center_xyz" value="$(arg gripper_center_xyz)"/> <!-- Overload with launchfile argument -->
+
+  <!-- Create the hand urdf -->
+  <xacro:hand ns="panda" safety_distance="0.0" gripper_center="${gripper_center}" gripper_center_xyz="${gripper_center_xyz}"/>
+</robot>

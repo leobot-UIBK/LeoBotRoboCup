@@ -1,0 +1,14 @@
+BTT3:
+  prep_time: 3
+  exec_time: 10
+  objects: 6
+  decoys: 3
+  tables: 5
+  shelfes_grasping: 2
+  shelfes_placing: 1
+  arbitrary_surfaces: 2
+  obstacles: 2
+  barrier_tapes: 1
+  object_types:
+    CONTAINER_RED: 2
+    CONTAINER_BLUE: 2

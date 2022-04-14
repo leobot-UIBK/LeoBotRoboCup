@@ -1,0 +1,38 @@
+footprint: [[0.358,0.272], [-0.358,0.272], [-0.358,-0.272], [0.358,-0.272]]
+
+transform_tolerance: 0.2
+
+obstacle_layer:
+ enabled: true
+ obstacle_range: 3.0
+ raytrace_range: 4.0
+ inflation_radius: 0.2
+ track_unknown_space: true
+ combination_method: 1
+
+ observation_sources: tim
+#tim_front: {sensor_frame: laser_front, data_type: LaserScan, topic: /scan_front, marking: true, clearing: true}
+#tim_back: {sensor_frame: laser_back, data_type: LaserScan, topic: /scan_back, marking: true, clearing: true}
+#upper scans are the single lidars. tim is the combination
+ tim: {sensor_frame: base_link, data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+
+
+inflation_layer:
+  enabled:              true
+  cost_scaling_factor:  10.0  # exponential rate at which the obstacle cost drops off (default: 10)
+  inflation_radius:     0.5   # max. distance from an obstacle at which costs are incurred for planning paths.
+
+static_layer:
+  enabled:              true
+  map_topic:            "/map"
+
+virtual_layer:
+  enabled:              true
+  zone_topics:          [/virtual_costamp_layer/zone]
+  obstacle_topics:      [/virtual_costamp_layer/obsctacles]
+  one_zone:             true     
+  forms:    
+     - [0.4, 0.0]
+     - [[0.4, 0.0]]
+     - [[-0.4, 0.0],[0.0, 0.4]]
+     - [[5, 5],[-5, 5],[-5, -5],[5, -5]]

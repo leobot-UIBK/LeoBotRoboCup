@@ -1,0 +1,6 @@
+<launch>
+    <!--  !-->
+<node name="fake_meassurem_data" pkg="meassurments" type="fake_torque_publisher"/>
+<node name="meassurement_node_torque_ang" pkg="meassurments" type="meassurments_torque_ang" output="screen"/>
+</launch>
+

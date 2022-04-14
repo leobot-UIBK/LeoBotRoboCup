@@ -1,0 +1,29 @@
+# This .yaml file is intended to store all parameters for the /leobot_base movement! 
+# units: meter, seconds, kg, Newton, Joule 
+#
+        flag_debug: false
+        flag_filter: true
+        t_timeout: 0.5
+# dimensions of the platform: 
+        wheelradius: 0.0762
+        lx: 0.4 # 0.2
+        ly: 0.39 # 0.195
+        lpanda: 0.211
+
+        # velocities: 
+        max_vel_x: 1.0
+        max_vel_y: 1.0
+        max_vel_phi: 1.5
+        max_wheelvel: 19.0 # max speed of each wheel, limited by gear
+        # max wheelspeed of 19 rad/s is approx 10000 rpm at motor. 
+
+# acceleration: 
+        max_wheelacc: 19.0 
+       
+# gear: 
+        gearbox_ratio_belt: 1.636363 
+
+# flag for correction of the sign for movement of i-th wheel (--> mounting direction of the wheel): 
+        dir_wheels: [-1, 1, -1, 1]
+#
+#

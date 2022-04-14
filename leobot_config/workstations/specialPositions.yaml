@@ -1,0 +1,11 @@
+# This .yaml file stores information about special position in reference to the world frame.     
+# Version 2021; units meter, RAD
+# tag: Same tag as workstation definend by atworkcommander files
+# description: A string to identify the pose  of the WS in detail
+# positon: Positon of the workstation center  in reference to world coordinate system
+# orientation: Orientation of workstation center in reference to world coordinate sytem
+
+ArenaStart:   {name: ArenaStart,   description:  start point of the robot, deskNum: -1,  position: [0, 0, 0],    orientation: [0.0, 0.0, 0.0], height: 0, robotPose: ws2robotFront}
+
+ArenaExit:     {name: ArenaExit,   description:  exit point of the Arena, deskNum: -1,  position: [8.2, 1.0, 0],    orientation: [0,0,0], height: 0, robotPose: ws2robotFront}
+

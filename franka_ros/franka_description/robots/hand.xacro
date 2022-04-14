@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="hand">
+  <!-- safety_distance: Minimum safety distance in [m] by which the collision volumes are expanded and which is enforced during robot motions -->
+  <xacro:macro name="hand" params="connected_to:='' ns:='' rpy:='0 0 0' xyz:='0 0 0' gripper_center:='false' gripper_center_xyz:='0.0 0.0 0.10' safety_distance:=0"> 
+    <xacro:unless value="${connected_to == ''}">
+      <joint name="${ns}_hand_joint" type="fixed">
+        <parent link="${connected_to}"/>
+        <child link="${ns}_hand"/>
+        <origin xyz="${xyz}" rpy="${rpy}"/>
+      </joint>
+    </xacro:unless>
+
+    <!-- Links -->
+    <link name="${ns}_hand">
+      <visual>
+        <geometry>
+          <mesh filename="package://franka_description/meshes/visual/hand.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0.025" rpy="0 ${pi/2} ${pi/2}"/>
+        <geometry>
+          <cylinder radius="${0.043+safety_distance}" length="0.12" />
+        </geometry>
+      </collision>
+      <collision>
+        <origin xyz="0 -0.066 0.025" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="${0.048+safety_distance}"  />
+        </geometry>
+      </collision>
+      <collision>
+        <origin xyz="0 0.066 0.025" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="${0.048+safety_distance}"  />
+        </geometry>
+      </collision>
+
+      <!--collision>
+        <origin xyz="0 0 0.122" rpy="0 ${pi/2} ${pi/2}"/>
+        <geometry>
+          <cylinder radius="${0.012+safety_distance}" length="0.1" />
+        </geometry>
+      </collision-->
+    </link>
+
+    <link name="${ns}_leftfinger">
+      <visual>
+        <geometry>
+          <mesh filename="package://franka_description/meshes/visual/finger.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0.01 0.06" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.01"  />
+        </geometry>
+      </collision>
+
+    </link>
+
+    <link name="${ns}_rightfinger">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+        <geometry>
+          <mesh filename="package://franka_description/meshes/visual/finger.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 -0.01 0.06" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.01"  />
+        </geometry>
+      </collision>
+   </link>
+
+   <!-- Joints -->   
+    <joint name="${ns}_finger_joint1" type="prismatic">
+      <parent link="${ns}_hand"/>
+      <child link="${ns}_leftfinger"/>
+      <origin xyz="0 0 0.0584" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="20" lower="0.0" upper="0.04" velocity="0.2"/>
+    </joint>
+
+
+
+    <joint name="${ns}_finger_joint2" type="prismatic">
+      <parent link="${ns}_hand"/>
+      <child link="${ns}_rightfinger"/>
+      <origin xyz="0 0 0.0584" rpy="0 0 0"/>
+      <axis xyz="0 -1 0"/>
+      <limit effort="20" lower="0.0" upper="0.04" velocity="0.2"/>
+      <mimic joint="${ns}_finger_joint1" />
+    </joint>
+
+    <!-- Create gripper center virtual link and joint -->
+    <xacro:if value="${gripper_center}"> <!-- Only when gripper_center==True -->
+      <link name="${ns}_gripper_center">
+      </link>
+      <joint name="${ns}_gripper_center_joint" type="fixed">
+        <parent link="${ns}_hand"/>
+        <child link="${ns}_gripper_center"/>
+        <origin xyz="${gripper_center_xyz}" rpy="0 0 0"/>
+        <axis xyz="0 -1 0"/>
+      </joint>
+    </xacro:if>
+  </xacro:macro>
+</robot>

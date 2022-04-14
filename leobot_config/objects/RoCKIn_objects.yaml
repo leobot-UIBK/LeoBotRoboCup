@@ -1,0 +1,19 @@
+# This .yaml file stores information about the standard_objects from the roboCup@Work league        
+# Version 2021; units meter, kg 
+
+# Description: A string to identify the object in detail
+# BoundingBox: the cuboid in which the object fits
+# Mass: The mass of the object in kg
+# GraspPoint: Shift the point at which the object is grasped by this vector (in it's local frame). If it is [0,0,0] the object is grasped in the middle of the bounding box. 
+# GraspWidth: how far the gripper yaws are opened in the local y-Direction
+
+
+# inner diameter 0.032
+Bearing_Box:    {ID: 21, description:  Bearing box,     boundingbox: [0.050, 0.045, 0.025],         mass: 0.102,    grasp_point: [0,0,0],               grasp_width: 0.045}
+# Inner diameter 0.015, outer diameter 0.032
+Bearing:        {ID: 22, description:  Bearing,         boundingbox: [0.032, 0.032, 0.013],         mass: 0.042,    grasp_point: [0,0,0],               grasp_width: 0.032}
+Axis:           {ID: 23, description:  Axis,            boundingbox: [0.096, 0.027, 0.027],         mass: 0.040,    grasp_point: [0,0,0],               grasp_width: 0.012}
+# Distance_Tube: inner diameter 0.028, outer diameter 0.032
+Distance_Tube:  {ID: 24, description:  Distance Tube,   boundingbox: [0.032, 0.032, 0.010],         mass: 0.005,    grasp_point: [0,0,0],               grasp_width: 0.032}
+Motor:          {ID: 25, description:  Motor,           boundingbox: [0.087, 0.042, 0.042],         mass: 0.020,    grasp_point: [0,0,0],               grasp_width: 0.042}
+

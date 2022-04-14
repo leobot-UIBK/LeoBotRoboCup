@@ -1,0 +1,4 @@
+float64[10] data
+---
+int32 flagSuccess
+float32 time

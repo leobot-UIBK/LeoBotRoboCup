@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<launch>
+	
+<!-- static Transforms-->
+<node pkg="tf2_ros" type="static_transform_publisher" name="world_to_map" args="0 0 0 0 0 0 world map"/>
+<node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 map odom"/>
+<node pkg="tf2_ros" type="static_transform_publisher" name="base_to_sick1" args="0.319615 0.23437 0 3.9265 3.1415 0 base_link base_sick1" />
+<node pkg="tf2_ros" type="static_transform_publisher" name="base_to_sick2" args="-0.319615 -0.23437 0 0.785398163 3.1415 0 base_link base_sick2"/>
+
+<!-- bring up map-->
+<arg name="map_file" default="$(find leobot_navigation)/config/map/map2.yaml"/>
+<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+
+<!-- bring up rviz visualization-->
+<node type="rviz" name="rviz" pkg="rviz" args="-d $(find leobot_navigation)/rviz/navigation_sim.rviz"/>
+
+<include file="$(find leobot_navigation)/launch/amcl.launch"/>
+
+<rosparam command="load" file="$(find leobot_config)/workstations/world2wsPose.yaml"/>
+<rosparam command="load" file="$(find leobot_config)/workstations/ws2robotPose.yaml"/>
+
+<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
+	<rosparam file="$(find  leobot_navigation)/config/move_base/move_base_params.yaml" command="load"/>
+	<rosparam file="$(find  leobot_navigation)/config/move_base/base_local_plannerTEB.yaml" command="load"/>
+    <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+	<param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS"/>
+	<remap from="cmd_vel" to="/leobot_base/cmd_vel"/>
+
+    <!-- LOAD COSTMAP_CONVERTER PARAMETERS HERE -->
+    <rosparam file="$(find leobot_navigation)/config/move_base/costmap/costmap_converter_params.yaml" command="load"/>
+
+	<rosparam file="$(find leobot_navigation)/config/move_base/global_planner_params.yaml" command="load"/>
+	<rosparam file="$(find leobot_navigation)/config/move_base/costmap/common_costmap_params.yaml" command="load" ns="global_costmap"/> 
+	<rosparam file="$(find leobot_navigation)/config/move_base/costmap/common_costmap_params.yaml" command="load" ns="local_costmap"/>
+	<rosparam file="$(find leobot_navigation)/config/move_base/costmap/local_costmap_params.yaml" command="load"/>
+	<rosparam file="$(find leobot_navigation)/config/move_base/costmap/global_costmap_params.yaml" command="load"/> 
+
+</node>
+
+<!-- bring up laser merger-->
+<node pkg="ira_laser_tools" name="laserscan_multi_merger" type="laserscan_multi_merger" output="screen">
+        <param name="destination_frame" value="base_link"/>
+	<param name="cloud_destination_topic" value="/merged_cloud"/>
+	<param name="scan_destination_topic" value="/scan"/>
+        <param name="laserscan_topics" value ="/sick_scan1 /sick_scan2" /> 
+
+        <param name="angle_min" value="-3.14"/>
+        <param name="angle_max" value="3.14"/>
+        <param name="angle_increment" value="0.0058"/>
+        <param name="scan_time" value="0.0333333"/>
+        <param name="range_min" value="0.30"/>
+        <param name="range_max" value="50.0"/>
+
+</node>
+
+</launch>

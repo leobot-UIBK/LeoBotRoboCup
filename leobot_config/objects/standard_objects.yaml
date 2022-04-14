@@ -1,0 +1,26 @@
+# This .yaml file stores information about the standard_objects from the roboCup@Work league
+# Version 2021; units meter, kg 
+
+# Description: A string to identify the object in detail
+# BoundingBox: the cuboid in which the object fits
+# Mass: The mass of the object in kg
+# GraspPoint: Shift the point at which the object is grasped by this vector (in it's local frame). If it is [0,0,0] the object is grasped in the middle of the bounding box. 
+# GraspWidth: how far the gripper yaws are opened in the local y-Direction
+
+
+F20_20_B:   {ID: 11, description:  Small aluminium profile (black),     boundingbox: [0.1, 0.02, 0.02],         mass: 0.049,    grasp_point: [0,0,0],               grasp_width: 0.02}
+F20_20_G:   {ID: 12, description:  Small aluminium profile (gray),      boundingbox: [0.1, 0.02, 0.02],         mass: 0.049,    grasp_point: [0,0,0],               grasp_width: 0.02}
+S40_40_B:   {ID: 13, description:  Big aluminium profile (black),       boundingbox: [0.1, 0.04, 0.04],         mass: 0.186,    grasp_point: [0,0,0],               grasp_width: 0.04}
+S40_40_G:   {ID: 14, description:  Big aluminium profile (gray),        boundingbox: [0.1, 0.04, 0.04],         mass: 0.186,    grasp_point: [0,0,0],               grasp_width: 0.04}
+# the boundingbox of the Screw includes the head, wich has a wrench opening of 30; the length = 100 + head height (see ISO 4014)
+M20_100:    {ID: 15, description:  Screw ISO 4014 M20,                  boundingbox: [0.1125, 0.033, 0.033],    mass: 0.296,    grasp_point: [-0.004,0,0],          grasp_width: 0.02} 
+M20:        {ID: 16, description:  Small nut ISO 4032 M20,              boundingbox: [0.03295,0.030,0.018],     mass: 0.056,    grasp_point: [0,0,0],               grasp_width: 0.03} 
+M30:        {ID: 17, description:  Big nut ISO 4032 M30,                boundingbox: [0.05085,0.045,0.025],     mass: 0.217,    grasp_point: [0,0,0],               grasp_width: 0.046} 
+# Plastic tube with inner diameter 0.02m and outer diameter 0.03  
+R20:        {ID: 18, description:  Plastic Tube di = 0.02 do = 0.03,  boundingbox: [0.045,0.03,0.03],         mass: 0.014,    grasp_point: [0,0,0],               grasp_width: 0.03} 
+
+
+
+
+
+

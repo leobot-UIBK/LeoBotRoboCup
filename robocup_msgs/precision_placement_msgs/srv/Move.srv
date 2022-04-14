@@ -1,0 +1,15 @@
+string dmp_dir
+geometry_msgs/PoseStamped poseStamped
+float32[] k_pos
+float32[] ki_pos
+float32[] k_rot
+float32[] ki_rot
+float32 alpha_stop
+bool force_optimisation
+string name
+# simulation standard is every 50ms (20Hz). Use 1000Hz (every 1ms) for the real robot
+float32 frequency
+# timeout_factor * the demo dmp time
+float32 timeout_factor
+---
+bool success

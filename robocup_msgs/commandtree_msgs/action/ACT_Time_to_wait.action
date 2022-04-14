@@ -1,0 +1,8 @@
+#goal defintion
+MSG_Wait total_time
+---
+#result definiton
+MSG_Wait is_done
+---
+#feedback 
+duration remaining_time

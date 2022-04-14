@@ -1,0 +1,10 @@
+moveit_msgs/CollisionObject collision_object
+# Adds the object to the planning scene. If the object previously existed, it is replaced.
+uint8 ADD=0
+
+# Removes the object from the environment entirely (everything that matches the specified id)
+uint8 REMOVE=1
+
+# Operation to be performed
+uint8 operation
+---

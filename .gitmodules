@@ -1,0 +1,22 @@
+[submodule "ira_laser_tools"]
+	path = ira_laser_tools
+	url = https://github.com/iralabdisco/ira_laser_tools.git
+[submodule "sick_scan"]
+	path = sick_scan
+	url = https://github.com/SICKAG/sick_scan.git
+	
+[submodule "precision_placement/extern/quaternions"]
+	path = precision_placement/extern/quaternions
+	url = https://github.com/ferd36/quaternions.git
+[submodule "vicon_bridge"]
+	path = vicon_bridge
+	url = https://github.com/ethz-asl/vicon_bridge.git
+[submodule "atwork-commander"]
+	path = atwork-commander
+	url = https://github.com/robocup-at-work/atwork-commander.git
+[submodule "navigation"]
+	path = navigation
+	url = https://github.com/ros-planning/navigation.git
+[submodule "robocup_msgs/custom_msgs_demo"]
+	path = robocup_msgs/custom_msgs_demo
+	url = https://github.com/GMahmoud/custom_msgs_demo.git

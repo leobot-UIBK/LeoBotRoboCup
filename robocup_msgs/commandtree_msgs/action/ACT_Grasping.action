@@ -1,0 +1,8 @@
+#goal defintion
+MSG_Object_Grasping object_grasping
+---
+#result definiton
+bool success
+---
+#feedback 
+string feedback

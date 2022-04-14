@@ -1,0 +1,8 @@
+#goal defintion
+MSG_Move_armStamped information
+---
+#result definiton
+MSG_Move_armStamped result
+---
+#feedback
+string current_activity

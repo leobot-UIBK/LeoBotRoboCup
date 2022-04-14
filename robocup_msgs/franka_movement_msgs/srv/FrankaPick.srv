@@ -1,0 +1,4 @@
+string object_id
+moveit_msgs/Grasp grasp
+---
+moveit_msgs/MoveItErrorCodes error_code

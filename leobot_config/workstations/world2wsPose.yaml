@@ -1,0 +1,21 @@
+# This .yaml file stores information about the workstation position in reference to the world frame.
+# Version 2021; units meter, RAD
+# tag: Same tag as workstation definend by atworkcommander files
+# description: A string to identify the pose  of the WS in detail
+# positon: Positon of the workstation center  in reference to world coordinate system
+# orientation: Orientation of workstation center in reference to world coordinate sytem
+
+
+world2WS01:   {name: WS01,   description:  WS01 on 15cm desk, deskNum: 2,  robotPose: ws2robotRight,                                                position: [2.33, 2.376, 0.15],     orientation: [0.0, 0.0, 0.0],                     height: 0.15,  noPlace: 7}
+world2WS02:   {name: WS02,   description:  WS02 on 15cm desk, deskNum: 2,  robotPose: ws2robotLeft,                                                 position: [2.63, 2.376, 0.15],     orientation: [0.0, 0.0, -3.141592653589793],      height: 0.15,  noPlace: 8}
+world2WS03:   {name: WS03,   description:  WS03 on 5cm desk,  deskNum: 4,  robotPose: ws2robotLeft,                                                 position: [5.95, 2.376, 0.05],     orientation: [0.0, 0.0, 1.5707963267948966],      height: 0.05,  noPlace: 8}
+world2WS04:   {name: WS04,   description:  WS04 on 0cm desk,  deskNum: 5,  robotPose: ws2robotRight,                                                position: [5.94, 0.69, 0.0],     orientation: [0.0, 0.0, -1.5707963267948966],     height: 0.0045,  noPlace: 7 }
+world2WS05:   {name: WS05,   description:  WS05 on 0cm desk,  deskNum: 5,  robotPose: ws2robotFront,                                                position: [5.94, 0.36, 0.0],     orientation: [0.0, 0.0, 1.5707963267948966],      height: 0.0045,  noPlace: 8}
+world2WS06:   {name: WS06,   description:  WS06 on 10cm desk, deskNum: 6,  robotPose: ws2robotFront,                                                position: [3.73, -0.16, 0.10],   orientation: [0.0, 0.0, -3.141592653589793],      height: 0.10,  noPlace: 7}
+world2WS07:   {name: WS07,   description:  WS07 on 5cm desk,  deskNum: 7,   robotPose: ws2robotFront,                                               position: [2.84, 0.29, 0.05],   orientation: [0.0, 0.0, 0.0],                     height: 0.05,  noPlace: 7}
+world2WS08:   {name: WS08,   description:  WS08 on 10cm desk, deskNum: 3,  robotPose: ws2robotRight,                                                position: [3.95, 2.376, 0.10],     orientation: [0.0, 0.0, 0.0],                     height: 0.10,  noPlace: 7}
+world2WS09:   {name: WS09,   description:  WS09 on 10cm desk, deskNum: 3,  robotPose: ws2robotLeft,                                                position: [4.21, 2.376, 0.10],     orientation: [0.0, 0.0, -3.141592653589793],      height: 0.10,  noPlace: 8}
+world2SH01:   {name: SH01,   description:  SH01 shelf  bottom on 10cm desk,  deskNum: 8,                       robotPose: ws2robotFront,      position: [1.789, -1.429, 0.10],   orientation: [0.0, 0.00, -1.5707963267948966],    height: 0.10,  noPlace: 0}
+world2SH01top:   {name: SH01,   description:  SH01 shelf top on 10cm desk plus 26.7cm shelf 30degree , deskNum: 8,  robotPose: ws2robotFront,       position: [1.79, -1.64, 0.367],  orientation: [0.0, -0.5236, -1.5707963267948966], height: 0.01,  noPlace: 0}
+world2PP01:   {name: PP01,   description:  PP01 precision placement on 10cm desk, deskNum: 1,                       robotPose: ws2robotFront,       position: [0.83, 1.066, 0.10],     orientation: [0.0, 0.0, 3.141592653589793],       height: 0.10,  noPlace: 0}
+

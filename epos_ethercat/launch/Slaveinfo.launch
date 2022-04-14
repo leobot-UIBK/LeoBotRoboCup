@@ -1,0 +1,9 @@
+<launch>
+<!-- the port can be used to specify to which ehternet interface the EtherCAT is connected-->
+<arg name="interface" default="enp1s0f1"/>
+<group ns="leobot_base">
+	<rosparam file="$(find epos_ethercat)/config/leobot_base.yaml"/>
+</group>
+<node launch-prefix="ethercat_grant" name="EPOS4_node" pkg="epos_ethercat" type="Eth_Slaveinfo" args="$(arg interface)" output = "screen"/>
+</launch>
+

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+
+<!-- bring up map-->
+<arg name="map_file" default="$(find leobot_navigation)/config/map/Arena_testing_August.yaml"/>   
+<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+    
+<include file="$(find leobot_navigation)/launch/amcl.launch"/>
+
+<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
+	<rosparam file="$(find  leobot_navigation)/config/move_base/move_base_params.yaml" command="load"/>
+	<remap from="cmd_vel" to="/leobot_base/cmd_vel"/>
+	<rosparam file="$(find leobot_navigation)/config/move_base/global_planner_params.yaml" command="load"/>
+	<rosparam file="$(find leobot_navigation)/config/move_base/costmap/common_costmap_params.yaml" command="load" ns="global_costmap"/> 
+	<rosparam file="$(find leobot_navigation)/config/move_base/costmap/common_costmap_params.yaml" command="load" ns="local_costmap"/>
+	<rosparam file="$(find leobot_navigation)/config/move_base/costmap/local_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find leobot_navigation)/config/move_base/costmap/global_costmap_params.yaml" command="load"/>
+
+    <rosparam file="$(find  leobot_navigation)/config/move_base/base_local_plannerTEB.yaml" command="load"/>
+
+    <!-- LOAD COSTMAP_CONVERTER PARAMETERS HERE -->
+    <rosparam file="$(find leobot_navigation)/config/move_base/costmap/costmap_converter_params.yaml" command="load"/>
+
+    <param name="base_global_planner" value="global_planner/GlobalPlanner"/>                                                                
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS"/>
+
+</node>
+
+<node name="tape_detection_test" pkg="robocup_tape_detection" type="tape_detection_v3.py" respawn="true"/>
+</launch>

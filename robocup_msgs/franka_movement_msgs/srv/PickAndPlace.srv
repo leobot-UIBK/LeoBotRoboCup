@@ -1,0 +1,27 @@
+# the pose and orientation of the object plus an offset distance
+geometry_msgs/PoseStamped pose_stamped
+# the distance form the pose stamped to the object center
+float64 distance
+# the gripper width before the pick / place execution
+float64 pre_gripper_width
+# the gripper width after the pick / place action
+float64 post_gripper_width
+# if this action is interacting with the robot stack this is the name of the stack position. Otherwise this is an empty string
+string stack_position
+# true if this is a pick, false if this is a grasp
+bool pick
+# the object id within the planing scene
+string object_id
+---
+int32 SUCCESS=0
+
+# error while the arm approached the initial pose
+int32 INITIAL_POSE_ERROR=1
+
+# error while the arm moved down to pick or place the object
+int32 PICK_PLACE_APPROACH_ERROR=2
+
+# error while the arm retreated from the position where the object was picked or placed
+int32 PICK_PLACE_RETREAT_ERROR=3
+
+int32 error_code

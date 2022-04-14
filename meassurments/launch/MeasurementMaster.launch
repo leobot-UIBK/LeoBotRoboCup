@@ -1,0 +1,9 @@
+<launch>
+<!--  !-->
+<arg name="datafile" default = "Rectangle_3Runs_3Velocities.txt"/>
+<arg name="path" default="$(find meassurments)/data"/>
+ 
+<node name="TrajServerNode" pkg="meassurments" type="TimedVelServer" output="screen"/>
+<node name="MeasurementMasterNode" pkg="meassurments" type="MeasurmentMaster.py" args="$(arg path) $(arg datafile)" output="screen"/>
+</launch>
+

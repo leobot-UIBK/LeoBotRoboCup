@@ -1,0 +1,10 @@
+# the corresponding id on the parameter server
+string id
+# the pose where the object should be placed
+geometry_msgs/PoseStamped poseStamped
+---
+# true if the new object could be added, false otherwise
+bool success
+# the id on the planning scene.
+# This id can differ from the request id if there are more than one object on the planning scene at the same time.
+string planning_scene_id

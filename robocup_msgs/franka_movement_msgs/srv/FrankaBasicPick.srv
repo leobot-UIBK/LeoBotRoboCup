@@ -1,0 +1,5 @@
+string object_id
+string supported_surface
+bool constrain_grasp_width
+---
+int32 error_code

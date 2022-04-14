@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="is_origin" default="true" />
+    <arg name="robot_ip" default="192.168.5.1" />
+    <arg name="gui" default="true" />
+    <arg name="as_simulation" default="false" />
+    <arg name="pointcloud" default="false" />
+    <arg name="lock" default="false" />
+    <arg name="path_franka_auth" default="$(find bringup_leobot)/config/franka_auth.txt" />
+    
+    <!-- Unlock the physical Franka-->
+    <group unless="$(arg as_simulation)">
+	    <node pkg = "bringup_leobot" type="lock_franka.py" name="test" args="$(arg robot_ip) $(arg lock) $(arg path_franka_auth)" output = "screen" />
+    </group>	
+
+    <!-- If needed, broadcast static tf for robot root -->
+    <group if="$(arg is_origin)">
+        <node pkg="tf2_ros" type="static_transform_publisher" name="world_to_odom_fake_broadcaster" args="0 0 0 0 0 0 world odom" />
+        <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_panda_base_fake_broadcaster" args="0 0 0 0 0 0 odom panda_base" />
+    </group>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="panda_base_to_panda_link0_publisher" args="0 0 0 0 0 0 panda_base panda_link0" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="panda_base_to_panda_footprint_publisher" args="0 0 -0.0512 0 0 0 panda_base panda_footprint" />
+
+
+    <!-- node pkg="tf2_ros" type="static_transform_publisher" name="object_test_broadcaster" args="0.049682605079 0.00597682444491 0.482693102909 -0.754048799024 0.0356012122201 0.0452372180144 0.654290880637 camera_arm_color_optical_frame obj_test" / -->
+
+    <!-- connected to the real robot -->
+    <include file="$(find franka_movement)/launch/franka_node.launch">
+        <arg name="robot_ip" value="$(arg robot_ip)"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="pointcloud" value="$(arg pointcloud)"/>
+        <arg name="as_simulation" value="$(arg as_simulation)" />
+    </include>
+
+
+    <!-- load the object informations onto the parameter server (grasp width, grasp point etc) -->
+    <include file="$(find leobot_config)/launch/load_objects.launch">
+    </include>
+
+
+
+</launch>

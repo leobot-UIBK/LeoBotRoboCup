@@ -1,0 +1,31 @@
+# This .yaml file stores information about the cavitie position in reference to the precition placement table pp01
+# Version 2021; units meter, RAD
+
+# description: A string to identify the pose of the cavitie in detail
+# positon: Positon of the center of the cavitie in reference to the pp01 table coordinate system in center of pp01 where WS=0.5x0.2 rectangle
+#          coordinate sytem: x shows to center of desk, z equals to world z
+# orientation: Orientation of the cavitie in reference to workstation coordinate system 
+
+
+# pp01toF20_20h:   {description:  F20_20 horizontal,  position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+# pp01toF20_20v:   {description:  F20_20 vertical,    position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+# pp01toS40_40h:   {description:  S40_40 horizontal,  position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+# pp01toS40_40v:   {description:  S40_40 vertical,    position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+# pp01toM20_100h:   {description:  M20_100 horizontal,  position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+# pp01toM20_100v:   {description:  M20_100 vertical,    position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+# pp01toM20h:   {description:  M20 horizontal,  position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+# pp01toM20v:   {description:  M20 vertical,    position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+# pp01toM30h:   {description:  M30 horizontal,  position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+# pp01toM30v:   {description:  N30 vertical,    position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+# pp01toR20h:   {description:  R20 horizontal,  position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+# pp01toR20v:   {description:  R20 vertical,    position: [-0.550, 0.02, 0.1], orientation: [0.0, 0.0, 0.0]          }
+
+# or  just the possible cavitie places 
+pp01tocav01:  {description:  cavitie 01 most left,      position: [0.0, 0.320, 0.0], orientation: [0.0, 0.0, 0.0]        }
+pp01tocav02:  {description:  cavitie 02,                position: [0.0, 0.160, 0.0], orientation: [0.0, 0.0, 0.0]        }
+pp01tocav03:  {description:  cavitie 03,                position: [0.0, 0.0, 0.0], orientation: [0.0, 0.0, 0.0]          }
+pp01tocav04:  {description:  cavitie 04,                position: [0.0, -0.160, 0.0], orientation: [0.0, 0.0, 0.0]       }
+pp01tocav05:  {description:  cavitie 05,                position: [0.0, -0.320, 0.0], orientation: [0.0, 0.0, 0.0]       }
+
+
+

@@ -1,0 +1,10 @@
+<launch>
+
+<!-- call launch file of the motor -->
+<include file="$(find epos_ethercat)/launch/leobot_base.launch" />
+
+<!-- launch the sine publisher for test purpose  -->
+<node name="sine_pub_node" pkg="epos_ethercat" type="Sine_publisher"/>
+
+</launch>
+

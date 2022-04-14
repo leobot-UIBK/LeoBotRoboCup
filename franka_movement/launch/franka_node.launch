@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="robot_ip" />
+  <arg name="gui" default="false" />
+  <arg name="debug" default="false" />
+  <!-- Allow user to specify if they want an extra gripper center frame -->
+  <arg name="gripper_center" default="true"/>
+  <arg name="gripper_center_xyz" default="0.0 0.0 0.125"/>      <!-- prev was 0.0 0.0 0.10 -->
+  <arg name="pointcloud" default="true" />
+  <arg name="as_simulation" default="false" />
+  <arg name="on_mobile_base" default="true" />
+
+
+  <include file="$(find franka_movement)/launch/moveit_init.launch" unless="$(arg as_simulation)">
+    <arg name="robot_ip" value="$(arg robot_ip)" />
+    <arg name="load_gripper" value="true" />
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="true" />
+    <arg name="gripper_center" default="$(arg gripper_center)"/>
+    <arg name="gripper_center_xyz" default="$(arg gripper_center_xyz)"/>
+    <arg name="on_mobile_base" value="$(arg on_mobile_base)" />
+  </include>
+
+  <!-- only RVIZ simulation -->
+  <include file="$(find panda_moveit_config)/launch/demo.launch" if="$(arg as_simulation)"/>
+
+  <!-- start the franka_node in debug version -->
+  <node name="franka_move_node" pkg="franka_movement" type="franka_node" args="0" output="screen" />
+  <node name="planing_scene_node" pkg="franka_movement" type="planing_scene_node" args="0" output="screen" />
+
+
+  <node name="pick_place" pkg="franka_movement" type="pick_place.py" args="$(arg as_simulation)" output="screen"/>
+
+
+</launch>

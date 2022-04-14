@@ -1,0 +1,19 @@
+<launch> 
+    <group ns="objects_manipulation">
+        <rosparam file="$(find leobot_config)/objects/standard_objects.yaml"/>
+        <rosparam file="$(find leobot_config)/objects/RoCKIn_objects.yaml"/>
+    </group>
+    <group ns="objects_stack">
+        <rosparam file="$(find leobot_config)/objects/robot2objectStackPose.yaml" />
+    </group>
+    <group ns="workstations">
+        <rosparam file="$(find leobot_config)/workstations/world2wsPose.yaml"/>
+        <rosparam file="$(find leobot_config)/workstations/ws2robotPose.yaml"/>
+        <rosparam file="$(find leobot_config)/workstations/specialPositions.yaml"/>
+        <group ns="placePose">
+            <rosparam file="$(find leobot_config)/workstations/ws2placePose.yaml"/>
+        </group>
+    </group>
+
+</launch>
+

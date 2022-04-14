@@ -1,0 +1,6 @@
+string object_id
+geometry_msgs/PoseStamped place_pose
+string supported_surface
+bool constrain_grasp_width
+---
+int32 error_code

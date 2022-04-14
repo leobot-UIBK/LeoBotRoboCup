@@ -1,0 +1,8 @@
+#goal defintion
+MSG_MoveStamped goal_position
+---
+#result definiton
+geometry_msgs/PoseStamped last_position
+---
+#feedback
+MSG_Movement movement
