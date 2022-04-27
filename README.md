@@ -1,7 +1,6 @@
 #RoboCup@Work Tyrolics  
 
 This is the main repository of the RoboCup@Work, Team Tyrolics from the University of Innsbruck.  
-For in detail information explore the [Wiki](https://git.uibk.ac.at/csav5085/robocupatwork/-/wikis/home).  
 
 ## Installation
 
